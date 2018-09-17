@@ -2,6 +2,8 @@
 
 int main()
 {
-	HandleToCharacter handle; handle->Print();
+	DrawAPI* api = new DrawImpl();
+	Character* character = new Player(api);
+	character->Draw();
 	std::cin.get();
 }

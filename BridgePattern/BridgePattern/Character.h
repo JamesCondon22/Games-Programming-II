@@ -1,21 +1,32 @@
 #pragma once
 
 #include <iostream>
+class DrawAPI
+{
+public:
+	virtual void Draw() = 0;
+};
+
+class DrawImpl : public DrawAPI
+{
+public:
+	void Draw() { std::cout << "Draw Impl" << std::endl; }
+};
 
 class Character
 {
 public:
-	Character() {}
-		void Print() { std::cout << "Printing Character" << std::endl; }
+	virtual void Draw() = 0;
 };
 
-class HandleToCharacter
+class Player : public Character
 {
 public:
-	HandleToCharacter() : character(new Character() ) {}
-	Character* operator->() { return character; } // overloaded 
+	
+	Player(DrawAPI* api) { this->api = api; }
+	void Draw() { api->Draw(); }
 
 private:
-	Character * character;
+	DrawAPI * api;
 };
 
