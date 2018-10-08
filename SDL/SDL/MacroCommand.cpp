@@ -20,6 +20,12 @@ void MacroCommand::remove(Command* command)
 	commands.remove(command);
 }
 
+void MacroCommand::undo()
+{
+	commands.clear();
+	std::cout << "List cleared" << std::endl;
+}
+
 
 void MacroCommand::execute()
 {

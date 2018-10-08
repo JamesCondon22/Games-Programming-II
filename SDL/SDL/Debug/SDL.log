@@ -1,2 +1,4 @@
-﻿  main.cpp
+﻿  InputHandler.cpp
+  MacroCommand.cpp
+  Generating Code...
   SDL.vcxproj -> C:\Users\gameuser\Desktop\Games Engineering II\SDL\Debug\SDL.exe

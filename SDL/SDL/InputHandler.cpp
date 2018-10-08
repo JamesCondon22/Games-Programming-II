@@ -2,11 +2,11 @@
 
 InputHandler::InputHandler()
 {
-	buttonX_ = new JumpCommand();
-	buttonY_ = new FireCommand();
-	buttonA_ = new CrouchCommand();
-	buttonB_ = new MelleeCommand();
-	buttonD_ = new ShieldCommand();
+	button1_ = new JumpCommand();
+	button2_ = new FireCommand();
+	button3_ = new CrouchCommand();
+	button4_ = new MelleeCommand();
+	button5_ = new ShieldCommand();
 	macro = new MacroCommand();
 
 }
@@ -24,28 +24,30 @@ void InputHandler::handleInput(SDL_Event & event)
 	case SDL_KEYDOWN:
 		switch (event.key.keysym.sym)
 		{
-		case SDLK_x:
-			buttonX_->execute();
-			macro->add(buttonX_);
+		case SDLK_1:
+			button1_->execute();
+			macro->add(button1_);
 			break;
-		case SDLK_y:
-			buttonY_->execute();
-			macro->add(buttonY_);
+		case SDLK_2:
+			button2_->execute();
+			macro->add(button2_);
 			break;
-		case SDLK_a:
-			buttonA_->execute();
-			macro->add(buttonA_);
+		case SDLK_3:
+			button3_->execute();
+			macro->add(button3_);
 			break;
-		case SDLK_b:
-			buttonB_->execute();
-			macro->add(buttonB_);
+		case SDLK_4:
+			button4_->execute();
+			macro->add(button4_);
 			break;
-		case SDLK_d:
-			buttonD_->execute();
-			macro->add(buttonD_);
+		case SDLK_5:
+			button5_->execute();
+			macro->add(button5_);
 			break;
-		case SDLK_z:
+		case SDLK_6:
 			macro->execute();
+		case SDLK_7:
+			macro->undo();
 			break;
 		
 		
