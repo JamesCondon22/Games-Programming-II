@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <string>
 #include "InputHandler.h"
+#include "State.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
@@ -35,11 +36,12 @@ SDL_Surface* gPNGSurface = NULL;
 SDL_Rect sourceRect;
 SDL_Rect destRect;
 
+State current;
+
 bool init()
 {
 	//Initialization flag
 	bool success = true;
-
 	sourceRect.x = 100;
 	sourceRect.y = 100;
 	sourceRect.w = 100;
@@ -165,7 +167,7 @@ int main(int argc, char* args[])
 
 			//Event handler
 			SDL_Event e;
-
+			int count = 0;
 			//While application is running
 			while (!quit)
 			{
@@ -173,13 +175,35 @@ int main(int argc, char* args[])
 				while (SDL_PollEvent(&e) != 0)
 				{
 					handler->handleInput(e);
+					
+					
 					//User requests quit
 					if (e.type == SDL_QUIT)
 					{
 						quit = true;
 					}
 				}
+				if (handler->getCurrent() == handler->IDLE)
+				{
+					destRect.x = 0;
+				}
+				if (handler->getCurrent() == handler->JUMP)
+				{
+					destRect.x = 85;
+				}
+				if (handler->getCurrent() == handler->CLIMB)
+				{
+					destRect.x = 170;
+				}
+				
+				destRect.y = destRect.y + 85;
+				destRect.w = 85;
+				destRect.h = 85;
 
+				if (destRect.y > 510)
+				{
+					destRect.y = 0;
+				}
 				//Apply the PNG image
 				SDL_BlitSurface(gPNGSurface, &destRect, gScreenSurface, &sourceRect);
 
