@@ -15,4 +15,5 @@ public:
 	virtual void redo();
 private:
 	std::list<Command*> commands;
+	std::list<Command*> redoCommands;
 };

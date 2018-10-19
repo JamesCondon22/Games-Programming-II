@@ -24,13 +24,27 @@ void MacroCommand::undo()
 {
 	
 	if (commands.size() > 0) {
+		(*commands.rbegin())->undo();
+		redoCommands.push_back(*commands.rbegin());
 		commands.pop_back();
+	}
+	else
+	{
+		std::cout << "List is Empty" << std::endl;
 	}
 }
 
 void MacroCommand::redo()
 {
+	if (redoCommands.size() > 0) {
 
+		(*redoCommands.rbegin())->redo();
+		commands.push_back(*redoCommands.rbegin());
+		redoCommands.pop_back();
+	}
+	else {
+		std::cout << "List is empty" << std::endl;
+	}
 }
 
 void MacroCommand::execute()
