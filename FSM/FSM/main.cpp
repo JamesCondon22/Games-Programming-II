@@ -185,24 +185,30 @@ int main(int argc, char* args[])
 				}
 				if (handler->getCurrent() == handler->IDLE)
 				{
-					destRect.x = 0;
+					destRect.y = 0;
 				}
 				if (handler->getCurrent() == handler->JUMP)
 				{
-					destRect.x = 85;
+					destRect.y = 85;
 				}
 				if (handler->getCurrent() == handler->CLIMB)
 				{
-					destRect.x = 170;
+					destRect.y = 170;
+				}
+				count++;
+
+				if (count > 1000)
+				{
+					destRect.x = destRect.x + 85;
+					count = 0;
 				}
 				
-				destRect.y = destRect.y + 85;
 				destRect.w = 85;
 				destRect.h = 85;
 
-				if (destRect.y > 510)
+				if (destRect.x > 510)
 				{
-					destRect.y = 0;
+					destRect.x = 0;
 				}
 				//Apply the PNG image
 				SDL_BlitSurface(gPNGSurface, &destRect, gScreenSurface, &sourceRect);
