@@ -7,8 +7,8 @@ class HealthSystem
 	std::vector<Entity> m_entities;
 
 public:
-	void addEntity(Entity e) {}
-	void update() {
-		std::cout << "HealthSystem update" << std::endl;
-	}
+	HealthSystem();
+	void addEntity(Entity  e);
+	void update();
+	
 };

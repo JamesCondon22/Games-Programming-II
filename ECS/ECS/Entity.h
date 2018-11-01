@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <iostream>
+#include <SDL.h>
 #include "Component.h"
 
 class Entity
@@ -8,10 +9,10 @@ class Entity
 	int id;
 public:
 	Entity() {};
-	void addComponent(Component c) { components.push_back(c); }
-	void removeComponent(Component c) {}
-	std::vector<Component> getComponents() { return components; }
+	void addComponent(Component* c) { components.push_back(c); }
+	void removeComponent(Component* c) {}
+	std::vector<Component*> getComponents() { return components; }
 
 private:
-	std::vector<Component> components;
+	std::vector<Component*> components;
 };
