@@ -1,13 +1,26 @@
-#pragma once
-
 #include "Entity.h"
 
+/// <summary>
+/// Control system moves any entities attached in the direction the button is pressed.
+/// </summary>
 class ControlSystem {
-	std::vector<Entity *> m_entities;
 public:
+	void addEntity(Entity en);
+	void control(SDL_Keycode in);
+	void update();
 
-	ControlSystem();
-	void addEntity(Entity * e);
-	void update(SDL_Event & e);
+private:
+	vector<Entity> m_entities;
+	//components
+	PositionComponent* positionComp;
+	ControlComponent* controlComp;
 	
+	float x = 0;
+	float y = 0;
+	float speed = 5;
+
+	void checkBoundary();
+	int screenWidth = 1280;
+	int screenHeight = 720;
+
 };

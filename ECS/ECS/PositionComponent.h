@@ -2,9 +2,10 @@
 
 #include "Component.h"
 
-class PositionComponent : Component
+class PositionComponent : public Component
 {
-	PositionComponent() : m_positionX(100.0f), m_positionY(100.0f) { id = 2; }
+public:
+	PositionComponent(float x, float y) : m_positionX(x), m_positionY(y) { id = 2; }
 
 	float getXpos() { return m_positionX; }
 	float getYPos() { return m_positionY; }

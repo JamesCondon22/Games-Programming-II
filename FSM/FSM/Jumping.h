@@ -8,6 +8,6 @@ class Jumping : public State
 public:
 	Jumping() {};
 	~Jumping() {};
-	void idle(Animation*a);
+	void idle(Animation*a, SDL_Rect &destRect);
 
 };

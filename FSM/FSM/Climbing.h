@@ -8,6 +8,6 @@ class Climbing : public State
 public:
 	Climbing() {};
 	~Climbing() {};
-	void idle(Animation* a);
+	void idle(Animation* a, SDL_Rect &destRect);
 
 };

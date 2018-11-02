@@ -135,8 +135,10 @@
   <ItemGroup>
     <ClInclude Include="AISystem.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="ContolComponent.h" />
     <ClInclude Include="ControlSystem.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="HealthComponent.h" />
     <ClInclude Include="HealthSystem.h" />
     <ClInclude Include="PositionComponent.h" />
@@ -144,8 +146,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ControlSystem.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="HealthSystem.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RenderSystem.cpp" />
+    <ClCompile Include="AISystem.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

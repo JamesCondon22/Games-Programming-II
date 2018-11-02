@@ -22,7 +22,7 @@ public:
 class Player : public Character
 {
 public:
-	
+	//calls a drawApi object and assigns to member variable api
 	Player(DrawAPI* api) { this->api = api; }
 	void Draw() { api->Draw(); }
 

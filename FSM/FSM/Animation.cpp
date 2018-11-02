@@ -22,17 +22,17 @@ State* Animation::getPrevious()
 {
 	return previous;
 }
-void Animation::idle()
+void Animation::idle(SDL_Rect &destRect)
 {
-	current->idle(this);
+	current->idle(this, destRect);
 }
 
-void Animation::jumping()
+void Animation::jumping(SDL_Rect &destRect)
 {
-	current->jumping(this);
+	current->jumping(this, destRect);
 }
 
-void Animation::climbing()
+void Animation::climbing(SDL_Rect &destRect)
 {
-	current->climbing(this);
+	current->climbing(this, destRect);
 }

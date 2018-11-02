@@ -174,7 +174,7 @@ int main(int argc, char* args[])
 				//Handle events on queue
 				while (SDL_PollEvent(&e) != 0)
 				{
-					handler->handleInput(e);
+					handler->handleInput(e, destRect);
 					
 					
 					//User requests quit
@@ -183,28 +183,13 @@ int main(int argc, char* args[])
 						quit = true;
 					}
 				}
-				if (handler->getCurrent() == handler->IDLE)
-				{
-					destRect.y = 0;
-				}
-				if (handler->getCurrent() == handler->JUMP)
-				{
-					destRect.y = 85;
-				}
-				if (handler->getCurrent() == handler->CLIMB)
-				{
-					destRect.y = 170;
-				}
+			
 				count++;
-
-				if (count > 1000)
+				if (count >= 1000)
 				{
 					destRect.x = destRect.x + 85;
 					count = 0;
 				}
-				
-				destRect.w = 85;
-				destRect.h = 85;
 
 				if (destRect.x > 510)
 				{

@@ -1,5 +1,5 @@
 #pragma once
-
+#include <SDL.h>
 
 class Animation
 {
@@ -7,13 +7,12 @@ class Animation
 	class State* previous;
 public:
 	Animation();
-	~Animation();
 	void setCurrent(State* s);
 	void setPrevious(State* s);
 	State* getCurrent();
 	State* getPrevious();
-	void idle();
-	void jumping();
-	void climbing();
+	void idle(SDL_Rect &destRect);
+	void jumping(SDL_Rect &destRect);
+	void climbing(SDL_Rect &destRect);
 
 };

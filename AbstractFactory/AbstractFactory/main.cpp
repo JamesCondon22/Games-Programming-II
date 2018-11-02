@@ -3,6 +3,7 @@
 
 int main()
 {
+	//A class cannot anticipate the type of objects it needs to create beforehand
 	Factory* factory = new CharacterFactory;
 	std::vector<Character*> characters;
 

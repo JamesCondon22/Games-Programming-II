@@ -12,7 +12,10 @@ GraphicProxy::~GraphicProxy()
 	if (graphic)
 		delete graphic;
 }
-
+/// <summary>
+/// wont be initialised until getInstance is called (Lazy Loading)
+/// </summary>
+/// <returns></returns>
 Graphic* GraphicProxy::getInstance(void)
 {
 	if (!graphic)

@@ -1,9 +1,110 @@
 #include "ControlSystem.h"
 
-ControlSystem::ControlSystem() {
-
+/// <summary>
+/// Adds entities to the list.
+/// </summary>
+/// <param name="en"></param>
+void ControlSystem::addEntity(Entity en)
+{
+	m_entities.push_back(en);
 }
 
-void ControlSystem::addEntity(Entity * e) {
-	m_entities.push_back(e);
+/// <summary>
+/// sets the direction the entity is going.
+/// </summary>
+/// <param name="in"></param>
+void ControlSystem::control(SDL_Keycode in)
+{
+	for (Entity& entity : m_entities) {
+		for (Component* comp : entity.getComponents()) {
+			if (comp->id == 3) {
+				controlComp = dynamic_cast<ControlComponent*>(comp);
+				switch (in) {
+				case SDLK_UP:
+					controlComp->changeState(controlComp->Up);
+					break;
+				case SDLK_DOWN:
+					controlComp->changeState(controlComp->Down);
+					break;
+				case SDLK_LEFT:
+					controlComp->changeState(controlComp->Left);
+					break;
+				case SDLK_RIGHT:
+					controlComp->changeState(controlComp->Right);
+					break;
+				default:
+					controlComp->changeState(controlComp->Idle);
+					break;
+				}
+			}
+		}
+	}
+}
+
+/// <summary>
+/// Moves the entity.
+/// </summary>
+void ControlSystem::update()
+{
+	for (Entity& entity : m_entities) {
+
+		for (Component* comp : entity.getComponents()) {
+			if (comp->id == 2) {
+
+				positionComp = dynamic_cast<PositionComponent*>(comp);
+			}
+			else if (comp->id == 3)
+			{
+				controlComp = dynamic_cast<ControlComponent*>(comp);
+
+			}
+		}
+
+		x = positionComp->getXpos();
+		y = positionComp->getYPos();
+
+
+		if (controlComp->m_currentGameState == controlComp->Up) {
+			y -= speed;
+		}
+
+		if (controlComp->m_currentGameState == controlComp->Down) {
+			y += speed;
+		}
+
+		if (controlComp->m_currentGameState == controlComp->Right) {
+			x += speed;
+		}
+
+		if (controlComp->m_currentGameState == controlComp->Left) {
+			x -= speed;
+		}
+
+		checkBoundary();
+		positionComp->setPosition(x,y);
+	}
+}
+
+/// <summary>
+/// simple boundary checking.
+/// </summary>
+void ControlSystem::checkBoundary()
+{
+	if (x > screenWidth)
+	{
+		x = 0 ;
+	}
+	else if (x < 0)
+	{
+		x = screenWidth;
+	}
+
+	if (y > screenHeight)
+	{
+		y = 0;
+	}
+	else if (y< 0)
+	{
+		y = screenHeight;
+	}
 }
