@@ -1,18 +1,11 @@
 #include "ControlSystem.h"
 
-/// <summary>
-/// Adds entities to the list.
-/// </summary>
-/// <param name="en"></param>
+
 void ControlSystem::addEntity(Entity en)
 {
 	m_entities.push_back(en);
 }
 
-/// <summary>
-/// sets the direction the entity is going.
-/// </summary>
-/// <param name="in"></param>
 void ControlSystem::control(SDL_Keycode in)
 {
 	for (Entity& entity : m_entities) {
@@ -41,9 +34,6 @@ void ControlSystem::control(SDL_Keycode in)
 	}
 }
 
-/// <summary>
-/// Moves the entity.
-/// </summary>
 void ControlSystem::update()
 {
 	for (Entity& entity : m_entities) {
@@ -80,15 +70,13 @@ void ControlSystem::update()
 			x -= speed;
 		}
 
-		checkBoundary();
+		bounderies();
 		positionComp->setPosition(x,y);
 	}
 }
 
-/// <summary>
-/// simple boundary checking.
-/// </summary>
-void ControlSystem::checkBoundary()
+
+void ControlSystem::bounderies()
 {
 	if (x > screenWidth)
 	{

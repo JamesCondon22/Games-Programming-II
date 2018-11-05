@@ -2,14 +2,11 @@
 
 #include "Component.h"
 
-/// <summary>
-/// Control Component.
-/// </summary>
 class ControlComponent : public Component {
 public:
 	ControlComponent() { id = 3; };
 
-	enum DirectionState {
+	enum direction {
 		Idle,
 		Left,
 		Right,
@@ -17,9 +14,9 @@ public:
 		Down
 	};
 
-	void changeState(DirectionState state) {
+	void changeState(direction state) {
 		m_currentGameState = state;
 	};
 
-	DirectionState m_currentGameState = DirectionState::Right;
+	direction m_currentGameState = direction::Idle;
 };

@@ -1,8 +1,5 @@
 #include "Entity.h"
 
-/// <summary>
-/// Control system moves any entities attached in the direction the button is pressed.
-/// </summary>
 class ControlSystem {
 public:
 	void addEntity(Entity en);
@@ -11,16 +8,16 @@ public:
 
 private:
 	vector<Entity> m_entities;
-	//components
+
 	PositionComponent* positionComp;
 	ControlComponent* controlComp;
 	
 	float x = 0;
 	float y = 0;
-	float speed = 5;
+	float speed = 2;
 
-	void checkBoundary();
-	int screenWidth = 1280;
-	int screenHeight = 720;
+	void bounderies();
+	int screenWidth = 1200;
+	int screenHeight = 700;
 
 };

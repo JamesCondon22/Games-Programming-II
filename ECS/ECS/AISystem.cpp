@@ -1,17 +1,11 @@
 #include "AiSystem.h"
 
-/// <summary>
-/// Adds entites to the system
-/// </summary>
-/// <param name="en"></param>
 void AiSystem::addEntity(Entity en)
 {
 	m_entities.push_back(en);
 }
 
-/// <summary>
-/// Moves entites upwards and resets them.
-/// </summary>
+
 void AiSystem::update()
 {
 	for (Entity& entity : m_entities) {
@@ -25,18 +19,22 @@ void AiSystem::update()
 
 		x = positionComp->getXpos();
 		y = positionComp->getYPos();
-
-		y -= speed;
+		
+		if (move)
+		{
+			y += speed;
+		}
+		else
+		{
+			y -= speed;
+		}
+		
 
 		checkBoundary();
-		std::pair<float, float> m_pos = { x, y };
 		positionComp->setPosition(x,y);
 	}
 }
 
-/// <summary>
-/// simple boundary checking.
-/// </summary>
 void AiSystem::checkBoundary()
 {
 	if (x > screenWidth)
@@ -50,10 +48,11 @@ void AiSystem::checkBoundary()
 
 	if (y > screenHeight)
 	{
-		y = 0;
+		move = false;
 	}
 	else if (y< 0)
 	{
-		y = screenHeight;
+		
+		move =true;
 	}
 }

@@ -27,14 +27,12 @@ private:
 	void processEvents();
 	void update();
 	void render();
-	void initialiseEntitys();
-	void initialiseComponents();
-	void initialiseSystems();
+	void initialise();
 
 	SDL_Window *m_window;
 	SDL_Renderer *m_renderer;
 	SDL_Event event;
-	bool m_exitGame;
+	bool exit;
 
 	Entity* m_player;
 	Entity* m_cat;
@@ -42,12 +40,12 @@ private:
 	Entity* m_dog;
 
 	HealthComponent* m_healthComponent;
-	ControlComponent* m_controlComponent;
-	PositionComponent* m_positionComponent;
+	ControlComponent* m_ctrlComponent;
+	PositionComponent* m_posComponent;
 	
 	HealthSystem m_healthSystem;
 	RenderSystem m_renderSystem;
-	ControlSystem m_controlSystem;
+	ControlSystem m_ctrlSystem;
 	AiSystem m_aiSystem;
 
 };

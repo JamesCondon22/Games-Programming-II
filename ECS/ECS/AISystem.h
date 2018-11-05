@@ -1,8 +1,5 @@
 #include "Entity.h"
 
-/// <summary>
-/// Ai system moves Ai entities Up he screen and resets them once they are off.
-/// </summary>
 class AiSystem {
 public:
 	void addEntity(Entity en);
@@ -17,10 +14,11 @@ private:
 	float speed = 10;
 
 	void checkBoundary();
-	int screenWidth = 1280;
-	int screenHeight = 720;
+	int screenWidth = 1200;
+	int screenHeight = 700;
 
 	int direction = 0;
+	bool move = false;
 
 };
 

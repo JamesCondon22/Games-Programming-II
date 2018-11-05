@@ -2,7 +2,7 @@
 
 Game::Game()
 {
-	m_window = SDL_CreateWindow("Entity Component Systems", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 720, SDL_WINDOW_OPENGL);
+	m_window = SDL_CreateWindow("Entity Component Systems", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1200, 700, SDL_WINDOW_OPENGL);
 	m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
 	int imgFlags = IMG_INIT_PNG | IMG_INIT_JPG;
@@ -11,14 +11,13 @@ Game::Game()
 	{
 		cout << "Error: " << IMG_GetError() << endl;
 	}
-	else
-	{
+	
+	m_player = new Player();
+	m_cat = new Cat();
+	m_alien = new Alien();
+	m_dog = new Dog();
 
-	}
-
-	initialiseEntitys();
-	initialiseComponents();
-	initialiseSystems();
+	initialise();
 }
 
 Game::~Game()
@@ -34,7 +33,7 @@ void Game::run()
 	Uint32 lastFrameTime = 0;
 	Uint32 deltaTime = 0;
 
-	while (!m_exitGame) {
+	while (!exit) {
 
 		processEvents();
 		frameTime = SDL_GetTicks();
@@ -61,12 +60,12 @@ void Game::processEvents()
 	while (SDL_PollEvent(&event)) {
 		switch (event.type) {
 		case SDL_QUIT:
-			m_exitGame = true;
+			exit = true;
 			break;
 		case SDL_KEYDOWN:
-			m_controlSystem.control(event.key.keysym.sym);
+			m_ctrlSystem.control(event.key.keysym.sym);
 			if (event.key.keysym.sym == SDLK_ESCAPE)
-				m_exitGame = true;
+				exit = true;
 			break;
 		}
 	}
@@ -75,7 +74,7 @@ void Game::processEvents()
 void Game::update()
 {
 	m_healthSystem.update();
-	m_controlSystem.update();
+	m_ctrlSystem.update();
 	m_aiSystem.update();
 }
 
@@ -87,60 +86,38 @@ void Game::render()
 	}
 
 	SDL_SetRenderDrawColor(m_renderer, 0, 0, 0, 255);
-
 	SDL_RenderClear(m_renderer);
-
 	m_renderSystem.render(m_renderer);
-
 	SDL_RenderPresent(m_renderer);
 
 }
 
-/// <summary>
-/// initialises entitys.
-/// </summary>
-void Game::initialiseEntitys()
-{
-	m_player = new Player();
-	m_cat = new Cat();
-	m_alien = new Alien();
-	m_dog = new Dog();
-}
 
-/// <summary>
-/// adds components to entitys.
-/// </summary>
-void Game::initialiseComponents()
+void Game::initialise()
 {
 	m_healthComponent = new HealthComponent();
-	m_positionComponent = new PositionComponent(0, 0);
-	m_controlComponent = new ControlComponent();
+	m_posComponent = new PositionComponent(600, 0);
+	m_ctrlComponent = new ControlComponent();
 
 	m_player->addComponent(m_healthComponent);
-	m_player->addComponent(m_positionComponent);
-	m_player->addComponent(m_controlComponent);
+	m_player->addComponent(m_posComponent);
+	m_player->addComponent(m_ctrlComponent);
 
-	m_positionComponent = new PositionComponent(300, 400);
+	m_posComponent = new PositionComponent(300, 400);
 
-	m_cat->addComponent(m_positionComponent);
+	m_cat->addComponent(m_posComponent);
 	m_cat->addComponent(m_healthComponent);
 
-	m_positionComponent = new PositionComponent(600, 400);
+	m_posComponent = new PositionComponent(600, 400);
 
-	m_alien->addComponent(m_positionComponent);
+	m_alien->addComponent(m_posComponent);
 	m_alien->addComponent(m_healthComponent);
 
-	m_positionComponent = new PositionComponent(900, 400);
+	m_posComponent = new PositionComponent(900, 400);
 
-	m_dog->addComponent(m_positionComponent);
+	m_dog->addComponent(m_posComponent);
 	m_dog->addComponent(m_healthComponent);
-}
 
-/// <summary>
-/// Adds entitys to systems.
-/// </summary>
-void Game::initialiseSystems()
-{
 	m_renderSystem.addEntity(*m_cat);
 	m_renderSystem.addEntity(*m_alien);
 	m_renderSystem.addEntity(*m_dog);
@@ -148,10 +125,10 @@ void Game::initialiseSystems()
 
 	m_healthSystem.addEntity(*m_player);
 
-	m_controlSystem.addEntity(*m_player);
+	m_ctrlSystem.addEntity(*m_player);
 
 	m_aiSystem.addEntity(*m_cat);
 	m_aiSystem.addEntity(*m_alien);
 	m_aiSystem.addEntity(*m_dog);
-
 }
+

@@ -1,2 +1,3 @@
-﻿  HealthSystem.cpp
-  ECS.vcxproj -> C:\Users\gameuser\Desktop\Games Engineering II\ECS - Copy\Debug\ECS.exe
+﻿  AISystem.cpp
+c:\users\gameuser\desktop\games engineering ii\ecs\ecs\aisystem.cpp(45): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  ECS.vcxproj -> C:\Users\gameuser\Desktop\Games Engineering II\ECS\Debug\ECS.exe
