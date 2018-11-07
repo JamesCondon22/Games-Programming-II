@@ -1,3 +1,13 @@
-﻿  AISystem.cpp
-c:\users\gameuser\desktop\games engineering ii\ecs\ecs\aisystem.cpp(45): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+﻿  ControlSystem.cpp
+c:\users\gameuser\desktop\games engineering ii\ecs\ecs\controlsystem.cpp(87): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\gameuser\desktop\games engineering ii\ecs\ecs\controlsystem.cpp(96): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Game.cpp
+  HealthSystem.cpp
+  main.cpp
+  RenderSystem.cpp
+c:\users\gameuser\desktop\games engineering ii\ecs\ecs\rendersystem.cpp(18): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\gameuser\desktop\games engineering ii\ecs\ecs\rendersystem.cpp(19): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  AISystem.cpp
+c:\users\gameuser\desktop\games engineering ii\ecs\ecs\aisystem.cpp(46): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
   ECS.vcxproj -> C:\Users\gameuser\Desktop\Games Engineering II\ECS\Debug\ECS.exe

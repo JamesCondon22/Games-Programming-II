@@ -19,7 +19,9 @@ public:
 	
 	Entity() {};
 	virtual ~Entity() {};
-
+	int getId() {
+		return id;
+	};
 	void addComponent(Component* c) { m_components.push_back(c); }
 	void removeComponenet(Component* c) {
 	};
@@ -39,6 +41,7 @@ public:
 	Player() { 
 		id = 1; 
 		m_color = { 255, 0, 0, 255 }; };
+	int getId() { return id; }
 };
 
 
@@ -46,8 +49,9 @@ class Cat : public Entity {
 public:
 	Cat() {
 		id = 2;
-		m_color = { 255, 255, 0, 255 }; };
-
+		m_color = { 255, 255, 0, 255 }; 
+	};
+	int getId() { return id; }
 };
 
 
@@ -57,13 +61,16 @@ public:
 		id = 3; 
 		m_color = { 0, 255, 0, 255 };
 	};
+	int getId() { return id; }
 };
 
 class Dog : public Entity {
 public:
 	Dog() { 
 		id = 4;
-		m_color = { 0, 0, 200, 255 }; };
+		m_color = { 0, 0, 200, 255 }; 
+	};
+	int getId() { return id; }
 };
 
 #endif // !ENTITY_H

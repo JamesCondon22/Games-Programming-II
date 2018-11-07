@@ -10,5 +10,6 @@ public:
 	HealthSystem();
 	void addEntity(Entity  e);
 	void update();
-	
+	void checkCollision();
+	int index = 0;
 };

@@ -124,6 +124,9 @@ void Game::initialise()
 	m_renderSystem.addEntity(*m_player);
 
 	m_healthSystem.addEntity(*m_player);
+	m_healthSystem.addEntity(*m_cat);
+	m_healthSystem.addEntity(*m_alien);
+	m_healthSystem.addEntity(*m_dog);
 
 	m_ctrlSystem.addEntity(*m_player);
 
