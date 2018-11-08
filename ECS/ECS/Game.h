@@ -39,7 +39,10 @@ private:
 	Entity* m_alien;
 	Entity* m_dog;
 
-	HealthComponent* m_healthComponent;
+	HealthComponent* m_healthComponentOne;
+	HealthComponent* m_healthComponentTwo;
+	HealthComponent* m_healthComponentThree;
+	HealthComponent* m_healthComponentFour;
 	ControlComponent* m_ctrlComponent;
 	PositionComponent* m_posComponent;
 	

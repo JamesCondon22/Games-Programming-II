@@ -10,6 +10,7 @@ void ControlSystem::control(SDL_Keycode in)
 {
 	for (Entity& entity : m_entities) {
 		for (Component* comp : entity.getComponents()) {
+
 			if (comp->id == 3) {
 				controlComp = dynamic_cast<ControlComponent*>(comp);
 				switch (in) {

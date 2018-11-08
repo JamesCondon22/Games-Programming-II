@@ -20,16 +20,8 @@ void AiSystem::update()
 		x = positionComp->getXpos();
 		y = positionComp->getYPos();
 		
-		if (move)
-		{
-			y += speed;
-		}
-		else
-		{
-			y -= speed;
-		}
+		y += speed;
 		
-
 		checkBoundary();
 		positionComp->setPosition(x,y);
 	}
@@ -48,11 +40,10 @@ void AiSystem::checkBoundary()
 
 	if (y > screenHeight)
 	{
-		move = false;
+		y = 0;
 	}
 	else if (y< 0)
 	{
-		
-		move =true;
+		y = screenHeight;
 	}
 }

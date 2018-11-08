@@ -9,7 +9,9 @@ class HealthSystem
 public:
 	HealthSystem();
 	void addEntity(Entity  e);
-	void update();
+	void update(SDL_Keycode in);
 	void checkCollision();
 	int index = 0;
+	bool pressed = false;
+	int count = 0;
 };

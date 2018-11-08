@@ -40,7 +40,7 @@ void Game::run()
 
 		deltaTime = frameTime - lastFrameTime;
 		lastFrameTime = frameTime;
-
+		
 		update();
 		render();
 
@@ -55,7 +55,7 @@ void Game::run()
 
 void Game::processEvents()
 {
-	SDL_Event event;
+	
 
 	while (SDL_PollEvent(&event)) {
 		switch (event.type) {
@@ -73,7 +73,7 @@ void Game::processEvents()
 
 void Game::update()
 {
-	m_healthSystem.update();
+	m_healthSystem.update(event.key.keysym.sym);
 	m_ctrlSystem.update();
 	m_aiSystem.update();
 }
@@ -95,28 +95,32 @@ void Game::render()
 
 void Game::initialise()
 {
-	m_healthComponent = new HealthComponent();
+	m_healthComponentOne = new HealthComponent();
+	m_healthComponentTwo = new HealthComponent();
+	m_healthComponentThree = new HealthComponent();
+	m_healthComponentFour = new HealthComponent();
+	
 	m_posComponent = new PositionComponent(600, 0);
 	m_ctrlComponent = new ControlComponent();
 
-	m_player->addComponent(m_healthComponent);
+	m_player->addComponent(m_healthComponentOne);
 	m_player->addComponent(m_posComponent);
 	m_player->addComponent(m_ctrlComponent);
 
 	m_posComponent = new PositionComponent(300, 400);
 
 	m_cat->addComponent(m_posComponent);
-	m_cat->addComponent(m_healthComponent);
+	m_cat->addComponent(m_healthComponentTwo);
 
 	m_posComponent = new PositionComponent(600, 400);
 
 	m_alien->addComponent(m_posComponent);
-	m_alien->addComponent(m_healthComponent);
+	m_alien->addComponent(m_healthComponentThree);
 
 	m_posComponent = new PositionComponent(900, 400);
 
 	m_dog->addComponent(m_posComponent);
-	m_dog->addComponent(m_healthComponent);
+	m_dog->addComponent(m_healthComponentFour);
 
 	m_renderSystem.addEntity(*m_cat);
 	m_renderSystem.addEntity(*m_alien);
