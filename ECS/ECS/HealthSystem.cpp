@@ -16,7 +16,7 @@ void HealthSystem::update(SDL_Keycode in)
 		for (Component * comp : entity.getComponents()) {
 			if (comp->id == 1)
 			{	
-				auto health = dynamic_cast<HealthComponent*>(comp)->getHealth() - 1;
+				auto health = dynamic_cast<HealthComponent*>(comp)->getHealth() - .00001;
 				dynamic_cast<HealthComponent*>(comp)->setHealth(health);
 				
 				if (health > 0)

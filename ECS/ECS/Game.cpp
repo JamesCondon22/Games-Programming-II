@@ -100,27 +100,28 @@ void Game::initialise()
 	m_healthComponentThree = new HealthComponent();
 	m_healthComponentFour = new HealthComponent();
 	
-	m_posComponent = new PositionComponent(600, 0);
+	m_posComponent = new PositionComponent(0, 0);
 	m_ctrlComponent = new ControlComponent();
 
 	m_player->addComponent(m_healthComponentOne);
 	m_player->addComponent(m_posComponent);
-	m_player->addComponent(m_ctrlComponent);
+	
 
-	m_posComponent = new PositionComponent(300, 400);
+	m_posComponent = new PositionComponent(300, 500);
 
 	m_cat->addComponent(m_posComponent);
 	m_cat->addComponent(m_healthComponentTwo);
 
-	m_posComponent = new PositionComponent(600, 400);
+	m_posComponent = new PositionComponent(600, 500);
 
 	m_alien->addComponent(m_posComponent);
 	m_alien->addComponent(m_healthComponentThree);
 
-	m_posComponent = new PositionComponent(900, 400);
+	m_posComponent = new PositionComponent(900, 500);
 
 	m_dog->addComponent(m_posComponent);
 	m_dog->addComponent(m_healthComponentFour);
+	m_dog->addComponent(m_ctrlComponent);
 
 	m_renderSystem.addEntity(*m_cat);
 	m_renderSystem.addEntity(*m_alien);
@@ -132,10 +133,10 @@ void Game::initialise()
 	m_healthSystem.addEntity(*m_alien);
 	m_healthSystem.addEntity(*m_dog);
 
-	m_ctrlSystem.addEntity(*m_player);
+	m_ctrlSystem.addEntity(*m_dog);
 
 	m_aiSystem.addEntity(*m_cat);
 	m_aiSystem.addEntity(*m_alien);
-	m_aiSystem.addEntity(*m_dog);
+	m_aiSystem.addEntity(*m_player);
 }
 

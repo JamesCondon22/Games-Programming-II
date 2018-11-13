@@ -30,17 +30,12 @@ void InputHandler::handleInput(SDL_Event & event, SDL_Rect &destRect)
 		{
 		case SDLK_UP:
 			fsm->jumping(destRect);
-			if (getCurrent() == IDLE)
-			setCurrent(JUMP);
 			break;
 		case SDLK_RIGHT:
 			fsm->climbing(destRect);
-			if (getCurrent() == IDLE)
-			setCurrent(CLIMB);
 			break;
 		case SDLK_DOWN:
 			fsm->idle(destRect);
-			setCurrent(IDLE);
 			break;
 	
 		}
