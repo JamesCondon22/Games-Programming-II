@@ -21,7 +21,7 @@ void enterNumbers(std::vector<int> & v) {
 	std::cin >> f;
 	v.push_back(f);
 	
-
+	std::cout << std::endl;
 }
 
 void intro()
@@ -43,22 +43,19 @@ int main()
 	int randomNumbers[6];
 	std::vector<int> lotto;
 	srand(time(NULL));
-
 	std::vector<int> v;
 	
-
 	for (int i = 0; i < size; i++)
 	{
 		randomNumbers[i] = rand() % 46 + 1;
 		lotto.push_back(randomNumbers[i]);
-		if (p.checkRecurring(lotto) == 0 && !lotto.empty())
+
+		while (p.checkRecurring(lotto) == 0 && !lotto.empty())
 		{
 			lotto.pop_back();
 			randomNumbers[i] = rand() % 46 + 1;
 			lotto.push_back(randomNumbers[i]);
 		}	
-		
-		std::cout << randomNumbers[i] << std::endl;
 	}
 
 	intro();
