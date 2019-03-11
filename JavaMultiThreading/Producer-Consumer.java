@@ -6,27 +6,23 @@ public class ProducerConsumerProblem {
   public static void main (String [] args) {
     Buffer buf = new Buffer();
     
-    
-    Thread prod = new Producer(10, buf);
-    Thread cons = new Consumer(10, buf);
+    //creates thread with instance of buffer class
+    Thread producer = new Producer(20, buf);
+    Thread consumer = new Consumer(20, buf);
     
    
-    prod.start();
-    cons.start();
+    producer .start();
+    consumer .start();
     
-    // Wait for the threads to finish
-//    try {
-//    	prod.join();
-//    	cons.join();
-//    } catch (InterruptedException e) {return;}
   }
  
 } 
-
+//
 class Buffer {
   		private int contents;
   		private boolean empty = true;
   		
+			//prevents thread interference
   		public synchronized void put (int i) throws InterruptedException { 
   			while (empty == false) { 	//wait till the buffer becomes empty
   				try { wait(); }
@@ -34,10 +30,10 @@ class Buffer {
   			}
   			contents = i;
   			empty = false;
-  			System.out.println("Producer: put..." + i);
+  			System.out.println("Producer: produced..." + i);
   			notify();
   		} 
-  		
+  		//prevents thread interence
   		public synchronized int get () throws InterruptedException {
   			while (empty == true)  {	//wait till something appears in the buffer
   				try { 	wait(); }
@@ -46,7 +42,7 @@ class Buffer {
   			empty = true;
   			notify();
   			int val = contents;
-  			System.out.println("Consumer: got..." + val);
+  			System.out.println("Consumer: consumed..." + val);
   			return val;
   		}
 }
