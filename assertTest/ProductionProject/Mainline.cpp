@@ -27,6 +27,7 @@ void enterNumbers(std::vector<int> & v) {
 void intro()
 {
 	std::cout << "Enter 6 numbers between 1 and 46." << std::endl;
+	std::cout << "Enter number then press Enter." << std::endl;
 	std::cout << "These number must be 6 different numbers." << std::endl;
 	std::cout << "You cannot repeat the same number." << std::endl;
 }
