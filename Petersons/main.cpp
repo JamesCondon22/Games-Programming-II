@@ -6,7 +6,10 @@
 int turn;
 
 
-int AMOUNT = 4;
+const int AMOUNT = 4;
+
+int in[AMOUNT];
+int last[AMOUNT];
 
 bool flag[4];
 
@@ -19,9 +22,22 @@ void CS(void * s)
 
 	while (true)
 	{
-		
-	}
+		for (int j = 1; j <= AMOUNT; j++)
+		{
+			in[n] = j;
+			last[j] = n;
 
+			for (int k = 0; k <= AMOUNT; k++)
+			{
+				if (k != n)
+				{
+					while (in[k] >= in[n] && last[j] == n);
+				}
+			}
+		}
+		std::cout << "Count: " << n << std::endl;
+		in[n] = 0;
+	}
 }
 
 void * funcOne()
@@ -69,11 +85,11 @@ int main()
 		m_threads.push_back(std::thread(CS, (void*)i));
 	}
 	
-	for (int i = 0; i < AMOUNT; i++)
+	for (int i = 0; i <= AMOUNT; i++)
 	{
 		m_threads[i].join();
 	}
 
-	system("PAUSE");
+	//system("PAUSE");
 	return 0;
 }
